@@ -5,6 +5,9 @@
     void yyerror(const char* msg);
     void callLine(int x, int y, int a, int b);
     void callPoint(int x, int y);
+    void callCircle(int x, int y, int radius);
+    void callSetColor(int red, int blue, int green);
+    void callRectangle(int x, int y, int w, int h);
 %}
 
 %error-verbose
