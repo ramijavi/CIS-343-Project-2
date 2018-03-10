@@ -32,3 +32,17 @@
 %%
 
 
+zoomjoystrong:	statementList end
+;
+
+statementList: statement 
+	| statement statementList 
+;
+
+statement:  point  
+	|	line  
+	|	circle	
+	|	rectangle 
+	|	set_color
+;
+
