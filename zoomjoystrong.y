@@ -109,4 +109,11 @@ void callCircle(int x, int y, int radius){
   }
 }
 
-
+void callRectangle(int x, int y, int w, int h){
+  if( x + w <= WIDTH && x + w >= 0 && y + h <= HEIGHT && y + h >= 0){ 
+    rectangle( x, y, w, h);
+  }
+  else{
+    printf("\nFailed to draw rectangle: Invalid arguments\n");
+  }
+}
