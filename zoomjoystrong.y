@@ -56,6 +56,12 @@ point:	POINT INT INT END_STATEMENT
 ;
 
 
- 
+rectangle:  RECTANGLE INT INT INT INT END_STATEMENT
+	{ printf( "%s %d %d %d %d;\n", $1, $2, $3, $4, $5); callRectangle($2, $3, $4, $5); }
+;
+
+set_color:  SET_COLOR INT INT INT END_STATEMENT
+	{ printf( "%s %d %d %d;\n", $1, $2, $3, $4); callSetColor($2, $3, $4); }
+; 
 
 %%
