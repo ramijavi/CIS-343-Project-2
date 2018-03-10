@@ -100,6 +100,13 @@ void callPoint(int x, int y){
   }
 }
 
-
+void callCircle(int x, int y, int radius){
+  if (radius > 0 && HEIGHT-y >= radius && y>=radius && x>=radius && WIDTH-x >= radius){ 
+    circle( x, y, radius);
+  }
+  else{
+    printf("\nFailed to draw circle: Invalid arguments\n");
+  }
+}
 
 
