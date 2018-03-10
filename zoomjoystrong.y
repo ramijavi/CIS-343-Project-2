@@ -77,6 +77,7 @@ int main(int argc, char** argv){
   printf("\n Programe Existing \n");
   return 0;
 }
+
 void yyerror(const char* msg){
   fprintf(stderr, "ERROR! %s\n", msg);
 }
@@ -90,7 +91,14 @@ void callLine(int x, int y, int a, int b){
   }
 }
 
-
+void callPoint(int x, int y){
+  if(x < HEIGHT && x > 0 && x < WIDTH && y < HEIGHT && y > 0 && y < WIDTH){
+   	point(x , y);
+  }
+  else{
+    	printf("\nFailed to draw point: Invalid arguments\n");
+  }
+}
 
 
 
