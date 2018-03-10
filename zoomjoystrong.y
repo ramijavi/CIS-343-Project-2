@@ -117,3 +117,12 @@ void callRectangle(int x, int y, int w, int h){
     printf("\nFailed to draw rectangle: Invalid arguments\n");
   }
 }
+
+void callSetColor(int red, int blue, int green){
+  if(red < 256 && red >= 0 && blue < 256 && blue >= 0 && green < 256 && green >= 0){
+    set_color( red, blue, green);
+  }
+  else{
+    printf("\nFailed to set color: Invalid arguments\n");
+  }
+}
