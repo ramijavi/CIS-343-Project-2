@@ -81,7 +81,14 @@ void yyerror(const char* msg){
   fprintf(stderr, "ERROR! %s\n", msg);
 }
 
-
+void callLine(int x, int y, int a, int b){
+  if(x < HEIGHT && x > 0 && x < WIDTH && y < HEIGHT && y > 0 && y < WIDTH && a < HEIGHT && a > 0 && a < WIDTH && b < HEIGHT && b > 0 && b < WIDTH){
+        line(x,y,a,b);
+  }
+  else{
+        printf("\nFailed to draw line: Invalid arguments\n");
+  }
+}
 
 
 
