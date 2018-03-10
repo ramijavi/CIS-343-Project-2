@@ -2,6 +2,9 @@
     #include "zoomjoystrong.h"
     #include <stdio.h>
     int yylex();
+    void yyerror(const char* msg);
+    void callLine(int x, int y, int a, int b);
+    void callPoint(int x, int y);
 %}
 
 %error-verbose
