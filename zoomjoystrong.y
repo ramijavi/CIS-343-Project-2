@@ -69,3 +69,22 @@ end: END END_STATEMENT
 ;
 
 %%
+
+
+int main(int argc, char** argv){
+  setup();
+  yyparse();
+  printf("\n Programe Existing \n");
+  return 0;
+}
+void yyerror(const char* msg){
+  fprintf(stderr, "ERROR! %s\n", msg);
+}
+
+
+
+
+
+
+
+
