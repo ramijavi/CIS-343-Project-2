@@ -46,3 +46,16 @@ statement:  point
 	|	set_color
 ;
 
+line:	LINE INT INT INT INT END_STATEMENT
+	{  printf( "%s %d %d %d %d;\n", $1, $2, $3, $4, $5); callLine($2, $3, $4, $5); }
+;
+
+
+point:	POINT INT INT END_STATEMENT
+	{ printf( "%s %d %d;\n" , $1, $2, $3); callPoint($2,$3); }  
+;
+
+
+ 
+
+%%
