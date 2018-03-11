@@ -1,4 +1,5 @@
 /* C declarations */
+
 %{
 
     #include "zoomjoystrong.h"
