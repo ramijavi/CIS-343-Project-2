@@ -1,6 +1,6 @@
-%{
 /* C declarations */
-	
+%{
+
     #include "zoomjoystrong.h"
     #include <stdio.h>
     int yylex();
@@ -13,6 +13,7 @@
 %}
 
 /* Bison declarations */
+
 %error-verbose
 %start zoomjoystrong
 
@@ -38,8 +39,7 @@
 %type<i> INT
 %type<f> FLOAT
 
-/* Grammer rules*/
-
+/* Grammar rules*/
 %%
 
 zoomjoystrong:	statementList end
@@ -104,7 +104,7 @@ void yyerror(const char* msg){
 /* Custom function that calls the line function in the source file */
 void callLine(int x, int y, int a, int b){
 
-	/* Checks for input error*/
+	/* Checks for input error: checks that the coordinates are within the window dimensions*/
 	if(x < HEIGHT && x > 0 && x < WIDTH && y < HEIGHT && y > 0 && y < WIDTH && a < HEIGHT && a > 0 && a < WIDTH && b < HEIGHT && b > 0 && b < WIDTH){
         	line(x, y, a, b);
   	}
@@ -117,7 +117,7 @@ void callLine(int x, int y, int a, int b){
 /* Custom function that calls the point function in the source file */
 void callPoint(int x, int y){
 
-	/* Checks for input eror */
+	/* Checks for input eror: checks that the coordinates are within the window dimensions */
   	if(x < HEIGHT && x > 0 && x < WIDTH && y < HEIGHT && y > 0 && y < WIDTH){
 		point(x , y);
 	}
@@ -130,7 +130,9 @@ void callPoint(int x, int y){
 /* Custom function that calls the circle function in the source file */
 void callCircle(int x, int y, int radius){
 	
-	/* Checks for input error */
+	/* Checks for input error: checks that the circle will be within the window dimensions
+	 * Adds the radius and the center coordinates to make sure of this
+	 */
 	if (radius > 0 && HEIGHT-y >= radius && y>=radius && x>=radius && WIDTH-x >= radius){ 
     		circle( x, y, radius);
   	}
@@ -143,7 +145,10 @@ void callCircle(int x, int y, int radius){
 /* Custom function that calls the rectangle function in the source file */
 void callRectangle(int x, int y, int w, int h){
 
-	/* Checks for input error */
+	/* Checks for input error: checks that the rectangle will be within the window dimensions
+	 * Adds the width and the height of the rectangle to the coordinates to ensure that they
+	 * are not greater than the window size
+	 */
   	if( x + w <= WIDTH && x + w >= 0 && y + h <= HEIGHT && y + h >= 0){ 
     		rectangle( x, y, w, h);
   	}
@@ -155,8 +160,11 @@ void callRectangle(int x, int y, int w, int h){
 
 /* Custom function that calls the set_color function in the source file */
 void callSetColor(int red, int blue, int green){
-	/* Check  for input error */
-  	if(red < 256 && red >= 0 && blue < 256 && blue >= 0 && green < 256 && green >= 0){
+
+	/* Check  for input error: checks that the number entered for the three primary colors are valid
+	 * These values must be between 0 and 255, both included
+	 */
+  	if(red =< 255 && red >= 0 && blue =< 255 && blue >= 0 && green =< 255 && green >= 0){
     		set_color( red, blue, green);
   	}
 	/* Notify the client if incorrect input was entered*/
