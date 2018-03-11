@@ -9,4 +9,10 @@
 
 %%
 
+(end)	  { yylval.str = strdup(yytext); return END; }
+;	  { return END_STATEMENT; }
+
+
+
+
 %%
