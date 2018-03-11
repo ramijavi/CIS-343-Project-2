@@ -1,4 +1,6 @@
 %{
+/* C declarations */
+	
     #include "zoomjoystrong.h"
     #include <stdio.h>
     int yylex();
@@ -10,6 +12,7 @@
     void callRectangle(int x, int y, int w, int h);
 %}
 
+/* Bison declarations */
 %error-verbose
 %start zoomjoystrong
 
@@ -35,8 +38,9 @@
 %type<i> INT
 %type<f> FLOAT
 
-%%
+/* Grammer rules*/
 
+%%
 
 zoomjoystrong:	statementList end
 ;
@@ -76,59 +80,87 @@ end: END END_STATEMENT
 
 %%
 
+/* Additional C code */
 
+/* Main method, entry poin for the program */
 int main(int argc, char** argv){
-  setup();
-  yyparse();
-  printf("\n Programe Existing \n");
-  return 0;
+  	
+	setup();
+  	yyparse();
+  	printf("\n Programe Existing \n");
+  	return 0;
+
 }
 
+/* Error reporting function. Will print an error message whenever it reads a token that doesn't
+ * satify any syntax rule 
+ */
 void yyerror(const char* msg){
-  fprintf(stderr, "ERROR! %s\n", msg);
+
+  	fprintf(stderr, "ERROR! %s\n", msg);
+
 }
 
+/* Custom function that calls the line function in the source file */
 void callLine(int x, int y, int a, int b){
-  if(x < HEIGHT && x > 0 && x < WIDTH && y < HEIGHT && y > 0 && y < WIDTH && a < HEIGHT && a > 0 && a < WIDTH && b < HEIGHT && b > 0 && b < WIDTH){
-        line(x,y,a,b);
-  }
-  else{
-        printf("\nFailed to draw line: Invalid arguments\n");
-  }
+
+	/* Checks for input error*/
+	if(x < HEIGHT && x > 0 && x < WIDTH && y < HEIGHT && y > 0 && y < WIDTH && a < HEIGHT && a > 0 && a < WIDTH && b < HEIGHT && b > 0 && b < WIDTH){
+        	line(x, y, a, b);
+  	}
+	/* Notify the user if incorrect input was entered */
+  	else{
+        	printf("\nFailed to draw line: Invalid arguments\n");
+  	}
 }
 
+/* Custom function that calls the point function in the source file */
 void callPoint(int x, int y){
-  if(x < HEIGHT && x > 0 && x < WIDTH && y < HEIGHT && y > 0 && y < WIDTH){
-   	point(x , y);
-  }
-  else{
-    	printf("\nFailed to draw point: Invalid arguments\n");
-  }
+
+	/* Checks for input eror */
+  	if(x < HEIGHT && x > 0 && x < WIDTH && y < HEIGHT && y > 0 && y < WIDTH){
+		point(x , y);
+	}
+	/* Notify the user if incorrect input was entered */
+  	else{
+    		printf("\nFailed to draw point: Invalid arguments\n");
+  	}
 }
 
+/* Custom function that calls the circle function in the source file */
 void callCircle(int x, int y, int radius){
-  if (radius > 0 && HEIGHT-y >= radius && y>=radius && x>=radius && WIDTH-x >= radius){ 
-    circle( x, y, radius);
-  }
-  else{
-    printf("\nFailed to draw circle: Invalid arguments\n");
-  }
+	
+	/* Checks for input error */
+	if (radius > 0 && HEIGHT-y >= radius && y>=radius && x>=radius && WIDTH-x >= radius){ 
+    		circle( x, y, radius);
+  	}
+	/* Notify the user if incorrect input was entered */
+  	else{
+  		printf("\nFailed to draw circle: Invalid arguments\n");
+	}
 }
 
+/* Custom function that calls the rectangle function in the source file */
 void callRectangle(int x, int y, int w, int h){
-  if( x + w <= WIDTH && x + w >= 0 && y + h <= HEIGHT && y + h >= 0){ 
-    rectangle( x, y, w, h);
-  }
-  else{
-    printf("\nFailed to draw rectangle: Invalid arguments\n");
-  }
+
+	/* Checks for input error */
+  	if( x + w <= WIDTH && x + w >= 0 && y + h <= HEIGHT && y + h >= 0){ 
+    		rectangle( x, y, w, h);
+  	}
+	/* Notify the user if incorrect input was entered */
+  	else{
+    		printf("\nFailed to draw rectangle: Invalid arguments\n");
+  	}
 }
 
+/* Custom function that calls the set_color function in the source file */
 void callSetColor(int red, int blue, int green){
-  if(red < 256 && red >= 0 && blue < 256 && blue >= 0 && green < 256 && green >= 0){
-    set_color( red, blue, green);
-  }
-  else{
-    printf("\nFailed to set color: Invalid arguments\n");
-  }
+	/* Check  for input error */
+  	if(red < 256 && red >= 0 && blue < 256 && blue >= 0 && green < 256 && green >= 0){
+    		set_color( red, blue, green);
+  	}
+	/* Notify the client if incorrect input was entered*/
+  	else{
+  	 	printf("\nFailed to set color: Invalid arguments\n");
+  	}
 }
