@@ -1,6 +1,6 @@
 # CIS-343-Project-2
 
-Authors: Javier Ramirez & Andy Hung
+Authors: Javier Ramirez & Andy hing Hung
 
 In this project we will create a very simple programming language. This language will be called Zoomjoystrong and it will be written in C, with the help of Flex and Bison. As such, we will need the following pieces:
 
