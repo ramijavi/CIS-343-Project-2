@@ -76,7 +76,7 @@ set_color:  SET_COLOR INT INT INT END_STATEMENT
 ; 
 
 circle:	CIRCLE INT INT INT END_STATEMENT
-	{printf("%s %d %d %d;\n", $1, $2, $3, $4); circleDraw($2, $3, $4);}
+	{printf("%s %d %d %d;\n", $1, $2, $3, $4); callCircle($2, $3, $4);}
 ;
 
 end: END END_STATEMENT
@@ -169,7 +169,7 @@ void callSetColor(int red, int blue, int green){
 	/* Check  for input error: checks that the number entered for the three primary colors are valid
 	 * These values must be between 0 and 255, both included
 	 */
-  	if(red =< 255 && red >= 0 && blue =< 255 && blue >= 0 && green =< 255 && green >= 0){
+  	if(red <= 255 && red >= 0 && blue <= 255 && blue >= 0 && green <= 255 && green >= 0){
     		set_color( red, blue, green);
   	}
 	/* Notify the client if incorrect input was entered*/

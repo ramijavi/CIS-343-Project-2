@@ -53,7 +53,8 @@ void line( int x1, int y1, int x2, int y2 ){
 }
 
 void circle(int x, int y, int r){
-	for(float i=0; i<2 * 3.14; i+=.01){
+	float i;
+	for(i=0; i<2 * 3.14; i+=.01){
 		float u = x + r * cos(i);
 		float v = y + r * sin(i);
 		point(u, v);

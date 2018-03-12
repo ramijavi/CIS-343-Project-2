@@ -1,6 +1,6 @@
 %{
 
-	#include "contact.tab.h"
+	#include "zoomjoystrong.tab.h"
 	#include <stdlib.h>
 
 %}
@@ -19,6 +19,6 @@
 [0-9]+	  		{ yylval.i = atoi(yytext); return INT; }
 -?[0-9]+\.[0-9]+ 	{yylval.f = atof(yytext); return FLOAT; }
 [ \t\n]	  		;
-.+  			; 
+. 			; 
 
 %%
