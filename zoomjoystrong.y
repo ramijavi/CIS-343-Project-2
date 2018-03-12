@@ -75,6 +75,10 @@ set_color:  SET_COLOR INT INT INT END_STATEMENT
 	{ printf( "%s %d %d %d;\n", $1, $2, $3, $4); callSetColor($2, $3, $4); }
 ; 
 
+circle:	CIRCLE INT INT INT END_STATEMENT
+	{printf("%s %d %d %d;\n", $1, $2, $3, $4); circleDraw($2, $3, $4);}
+;
+
 end: END END_STATEMENT
 	{ printf( "%s;\n", $1); finish(); return 0; }
 ;
